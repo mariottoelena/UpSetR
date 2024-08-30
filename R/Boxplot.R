@@ -42,7 +42,7 @@ BoxPlotsPlot <- function(bdat, att, att_color){
   bdat$x <- as.factor(bdat$x)
   boxplots <- ggplotGrob(ggplot()
                          + theme_bw() +ylab(yaxis)
-                         + scale_x_continuous(limits = plot_lims, expand = c(0, 0))
+                         + scale_x_discrete(limits = factor(plot_lims), expand = c(0, 0))
                          + theme(plot.margin = unit(c(-0.7,0,0,0), "cm"),
                                  axis.title.y = element_text(vjust = -0),
                                  axis.ticks.x = element_blank(),
@@ -51,7 +51,7 @@ BoxPlotsPlot <- function(bdat, att, att_color){
                                  panel.grid.minor = element_blank(),
                                  panel.grid.major = element_blank(),
                                  axis.title.x = element_blank())
-                         + geom_boxplot(data = bdat, aes_string(x="x", y="attribute"),
-                                        fill = "gray80", colour = "gray0"))
+                         + geom_boxplot(data = bdat, aes_string(x="x", y="attribute"), width = 0.2,
+                                        fill = "gray80", colour = "gray0")) 
   return(boxplots)
 }
